@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_shop/constants/endpoints.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -19,42 +20,44 @@ class OrderItem {
 }
 
 class Orders with ChangeNotifier {
+  Orders(this.authToken, this._orders);
   List<OrderItem> _orders = [];
+  final String authToken;
 
   List<OrderItem> get orders {
     return [..._orders];
   }
 
   Future<void> fetchAndSetOrders() async {
-    final url = 'https://flutter-provider-8b77c.firebaseio.com/orders.json';
-    var response = await http.get(url);
-    if (response.statusCode == 401) {
-      print('\n UNAUTHORIZED \n');
-      return;
-    }
-    final extracted = json.decode(response.body) as Map<String, dynamic>;
-    List<OrderItem> loadedOrders = [];
-    extracted.forEach((orderKey, orderData) {
-      loadedOrders.add(OrderItem(
-        id: orderKey,
-        amount: orderData['amount'],
-        products: (orderData['products'] as List<dynamic>).map(
-          (item) => CartItem(
-            id: item['id'],
-            title: item['title'],
-            quantity: item['quantity'],
-            price: item['price'],
-          ),
-        ).toList(),
-        dateTime: DateTime.parse(orderData['dateTime']),
-      ));
-    });
-    _orders = loadedOrders;
-    notifyListeners();
+    final url = '${EndpointUrlBuilder.readOrders()}?auth=$authToken';
+    try {
+      final response = await http.get(url);
+      final extracted = json.decode(response.body) as Map<String, dynamic>;
+      List<OrderItem> loaded = [];
+      extracted.forEach((orderKey, orderData) {
+        loaded.add(OrderItem(
+          id: orderKey,
+          amount: orderData['amount'],
+          products: (orderData['products'] as List<dynamic>)
+              .map(
+                (item) => CartItem(
+                  id: item['id'],
+                  title: item['title'],
+                  quantity: item['quantity'],
+                  price: item['price'],
+                ),
+              )
+              .toList(),
+          dateTime: DateTime.parse(orderData['dateTime']),
+        ));
+      });
+      _orders = loaded;
+      notifyListeners();
+    } catch (error) {}
   }
 
   Future<void> addOrder(List<CartItem> cartProducts, double total) async {
-    final url = 'https://flutter-provider-8b77c.firebaseio.com/orders.json';
+    final url = '${EndpointUrlBuilder.createOrder()}?auth=$authToken';
     final timestamp = DateTime.now();
     final response = await http.post(url,
         body: json.encode({

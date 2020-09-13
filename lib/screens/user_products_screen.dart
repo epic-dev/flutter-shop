@@ -25,15 +25,8 @@ class UserProductsScreen extends StatelessWidget {
       drawer: AppDrawer(),
       body: RefreshIndicator(
         onRefresh: () async {
-          print(Provider.of<Products>(context, listen: false)
-              .productItems
-              .length);
           await Provider.of<Products>(context, listen: false)
               .fetchAndSetProducts();
-          print(Provider.of<Products>(context, listen: false)
-              .productItems
-              .length);
-          print(productsData.productItems.length);
         },
         child: Padding(
           padding: const EdgeInsets.all(8.0),

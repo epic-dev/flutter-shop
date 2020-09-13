@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_shop/mock/products_mock.dart';
+import 'package:flutter_shop/constants/endpoints.dart';
 import 'package:flutter_shop/models/http_exception.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import './product.dart';
 
 class Products with ChangeNotifier {
-  Products(this.authToken, this._items);
+  Products(this.authToken, this.userId, this._items);
   final String authToken;
+  final String userId;
 
   List<Product> _items = [];
 
@@ -20,47 +21,52 @@ class Products with ChangeNotifier {
   }
 
   Future<void> fetchAndSetProducts() async {
-    final URL = 'https://flutter-provider-8b77c.firebaseio.com/products.json?auth=$authToken';
     try {
-      final response = await http.get(URL);
+      var url = '${EndpointUrlBuilder.readProducts()}?auth=$authToken&orderBy="creatorId"&equalTo="$userId"';
+      final response = await http.get(url);
       final extracted = json.decode(response.body) as Map<String, dynamic>;
+      url = 'https://flutter-provider-8b77c.firebaseio.com/userFavorites/$userId.json?auth=$authToken';
+      final favoritesResponse = await http.get(url);
+      final fav = json.decode(favoritesResponse.body) as Map<String, dynamic>;
       List<Product> loaded = [];
       extracted.forEach((productId, productData) {
         loaded.add(Product(
-            id: productId,
-            title: productData['title'],
-            description: productData['description'],
-            imageUrl: productData['imageUrl'],
-            price: productData['price'],
-            isFavorite: productData['isFavorite']));
+          id: productId,
+          title: productData['title'],
+          description: productData['description'],
+          imageUrl: productData['imageUrl'],
+          price: productData['price'],
+          isFavorite: fav == null ? false : fav[productId] ?? false,
+        ));
       });
       _items = loaded;
       notifyListeners();
-    } catch (error) {}
+    } catch (error) {
+      print('error $error');
+    }
   }
 
   Future<void> addProduct(Product product) async {
-    final URL = 'https://flutter-provider-8b77c.firebaseio.com/products.json';
+    final url = '${EndpointUrlBuilder.createProduct()}?auth=$authToken';
     try {
-      final response = await http.post(URL,
+      final response = await http.post(url,
           body: json.encode({
             'title': product.title,
             'description': product.description,
             'price': product.price,
             'imageUrl': product.imageUrl,
-            'isFavorite': product.isFavorite,
           }));
 
       final newProduct = Product(
-          id: json.decode(response.body)['name'],
-          title: product.title,
-          description: product.description,
-          price: product.price,
-          imageUrl: product.imageUrl);
+        id: json.decode(response.body)['name'],
+        title: product.title,
+        description: product.description,
+        price: product.price,
+        imageUrl: product.imageUrl,
+      );
       _items.add(newProduct);
       notifyListeners();
     } catch (exception) {
-      print(exception);
       throw exception;
     }
   }
@@ -70,11 +76,11 @@ class Products with ChangeNotifier {
   }
 
   Future<void> updateProduct(String id, Product product) async {
-    final URL = 'https://flutter-provider-8b77c.firebaseio.com/products/$id.json';
+    final url = '${EndpointUrlBuilder.updateProduct(id)}?auth=$authToken';
     final index = _items.indexWhere((element) => element.id == id);
     if (index >= 0) {
       _items[index] = product;
-      await http.patch(URL,
+      await http.patch(url,
           body: json.encode({
             'title': product.title,
             'description': product.description,
@@ -94,18 +100,17 @@ class Products with ChangeNotifier {
      save the reference until in successfully removed from server
      and return back if it's failed
     */
-    final URL = 'https://flutter-provider-8b77c.firebaseio.com/products/$id.json';
+    final url = '${EndpointUrlBuilder.deleteProduct(id)}?auth=$authToken';
     final existingProductIndex = _items.indexWhere((element) => element.id == id);
     var existingProduct = _items[existingProductIndex]; // save reference to the product
     _items.removeAt(existingProductIndex); // remove from the list but not from the memory
     notifyListeners();
-    http.delete(URL).then((response) {
+    http.delete(url).then((response) {
       if (response.statusCode >= 400) {
         throw HttpException('Could not delete product');
       }
       existingProduct = null;
     }).catchError((error) {
-      print(error);
       _items.insert(existingProductIndex, existingProduct);
       notifyListeners();
     });

@@ -43,7 +43,6 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
   var _showFavorites = false;
   @override
   Widget build(BuildContext context) {
-    // final productsContainer = Provider.of<Products>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
         title: Text('Products'),

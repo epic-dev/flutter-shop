@@ -197,6 +197,7 @@ class _AuthCardState extends State<AuthCard> {
                   onSaved: (value) {
                     _authData['email'] = value;
                   },
+                  textInputAction: TextInputAction.next,
                 ),
                 TextFormField(
                   decoration: InputDecoration(labelText: 'Password'),
@@ -210,6 +211,7 @@ class _AuthCardState extends State<AuthCard> {
                   onSaved: (value) {
                     _authData['password'] = value;
                   },
+                  textInputAction: TextInputAction.done,
                 ),
                 if (_authMode == AuthMode.Signup)
                   TextFormField(

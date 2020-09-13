@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_shop/providers/orders.dart' show Orders;
 import 'package:flutter_shop/widgets/app_drawer.dart';
+import 'package:flutter_shop/widgets/orders_list.dart';
 import 'package:provider/provider.dart';
-import '../widgets/order_item.dart';
 
 class OrdersScreen extends StatefulWidget {
   static const routeName = '/orders';
@@ -20,16 +20,12 @@ class _OrdersScreenState extends State<OrdersScreen> {
   }
   @override
   Widget build(BuildContext context) {
-    final orders = Provider.of<Orders>(context);
     return Scaffold(
       appBar: AppBar(
         title: Text('Orders'),
       ),
-      body: ListView.builder(
-        itemCount: orders.orders.length,
-        itemBuilder: (_, index) => OrderItem(orders.orders[index]),
-      ),
-      drawer: AppDrawer()  ,
+      body: OrdersList(),
+      drawer: AppDrawer(),
     );
   }
 }
