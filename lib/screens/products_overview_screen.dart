@@ -33,9 +33,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
     setState(() {
       _isLoading = true;
     });
-    Provider.of<Products>(context, listen: false)
-        .fetchAndSetProducts()
-        .then((value) {
+    Provider.of<Products>(context, listen: false).fetchAndSetProducts().then((value) {
       setState(() {
         _isLoading = false;
       });
@@ -61,8 +59,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
               })
             },
             itemBuilder: (_) => [
-              PopupMenuItem(
-                  child: Text('Favorites'), value: FILTER_OPTIONS.FAVORITES),
+              PopupMenuItem(child: Text('Favorites'), value: FILTER_OPTIONS.FAVORITES),
               PopupMenuItem(child: Text('Show all'), value: FILTER_OPTIONS.ALL),
             ],
             icon: Icon(Icons.more_vert),
