@@ -1,7 +1,8 @@
 repo_name: epic-dev/flutter-shop
 report_id: 495998108a57c57a1004d2f4ae4514fa
+version: 0.1
 repo_type: Public
-timestamp: '2023-11-09T13:48:59+00:00'
+timestamp: '2024-01-04T14:54:19+00:00'
 requested_by: pyuruts
 provider: github
 branch: master
@@ -16,6 +17,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Languages
   image_url: https://img.stackshare.io/service/1646/Twitter-02.png
+  detection_source_url: https://github.com/epic-dev/flutter-shop
   detection_source: Repo Metadata
 - name: JavaScript
   description: Lightweight, interpreted, object-oriented language with first-class
@@ -26,6 +28,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Languages
   image_url: https://img.stackshare.io/service/1209/javascript.jpeg
+  detection_source_url: https://github.com/epic-dev/flutter-shop/blob/master/pubspec.yaml
   detection_source: pubspec.yaml
   last_updated_by: Pavel Yuruts
   last_updated_on: 2020-09-09 07:46:36.000000000 Z
@@ -37,6 +40,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Languages
   image_url: https://img.stackshare.io/service/3750/pCfEzr6L.png
+  detection_source_url: https://github.com/epic-dev/flutter-shop
   detection_source: Repo Metadata
 - name: Objective-C
   description: The primary programming language you use when writing software for
@@ -47,6 +51,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Languages
   image_url: https://img.stackshare.io/service/1008/xcode.png
+  detection_source_url: https://github.com/epic-dev/flutter-shop
   detection_source: Repo Metadata
 - name: Ruby
   description: A dynamic, interpreted, open source programming language with a focus
@@ -57,6 +62,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Languages
   image_url: https://img.stackshare.io/service/989/ruby.png
+  detection_source_url: https://github.com/epic-dev/flutter-shop
   detection_source: Repo Metadata
 - name: Swift
   description: 'An innovative new programming language for Cocoa and Cocoa Touch. '
@@ -67,6 +73,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Languages
   image_url: https://img.stackshare.io/service/1009/tuHsaI2U.png
+  detection_source_url: https://github.com/epic-dev/flutter-shop
   detection_source: Repo Metadata
 - name: Android SDK
   description: An SDK that provides you the API libraries and developer tools necessary
@@ -78,7 +85,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Frameworks (Full Stack)
   image_url: https://img.stackshare.io/service/1010/m8jf0po4imu8t5eemjdd.png
-  detection_source_url: android/app/build.gradle
+  detection_source_url: https://github.com/epic-dev/flutter-shop/blob/master/android/app/build.gradle
   detection_source: android/app/build.gradle
   last_updated_by: Pavel Yuruts
   last_updated_on: 2020-09-09 07:46:36.000000000 Z
@@ -91,6 +98,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Cross-Platform Mobile Development
   image_url: https://img.stackshare.io/service/7180/flutter-mark-square-100.png
+  detection_source_url: https://github.com/epic-dev/flutter-shop/blob/master/pubspec.yaml
   detection_source: pubspec.yaml
   last_updated_by: Pavel Yuruts
   last_updated_on: 2020-09-13 21:43:40.000000000 Z
@@ -102,6 +110,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Version Control System
   image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source_url: https://github.com/epic-dev/flutter-shop
   detection_source: Repo Metadata
 - name: Gradle
   description: A powerful build system for the JVM
@@ -112,6 +121,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Java Build Tools
   image_url: https://img.stackshare.io/service/975/gradlephant-social-black-bg.png
+  detection_source_url: https://github.com/epic-dev/flutter-shop/blob/master/android/app/build.gradle
   detection_source: android/app/build.gradle
   last_updated_by: Pavel Yuruts
   last_updated_on: 2020-09-09 07:46:36.000000000 Z
@@ -123,6 +133,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Front End Package Manager
   image_url: https://img.stackshare.io/service/1120/lejvzrnlpb308aftn31u.png
+  detection_source_url: https://github.com/epic-dev/flutter-shop/blob/master/pubspec.yaml
   detection_source: pubspec.yaml
   last_updated_by: Pavel Yuruts
   last_updated_on: 2020-09-09 07:46:36.000000000 Z
@@ -135,7 +146,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Operating Systems
   image_url: https://img.stackshare.io/service/9586/ZvmtaSXW_400x400.jpg
-  detection_source_url: android/app/build.gradle
+  detection_source_url: https://github.com/epic-dev/flutter-shop/blob/master/android/app/build.gradle
   detection_source: android/app/build.gradle
   last_updated_by: Pavel Yuruts
   last_updated_on: 2020-09-09 07:46:36.000000000 Z
@@ -148,7 +159,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Package Managers
   image_url: https://img.stackshare.io/package/pub/image.png
-  detection_source_url: pubspec.lock
+  detection_source_url: https://github.com/epic-dev/flutter-shop/blob/master/pubspec.lock
   detection_source: pubspec.yaml
   last_updated_by: Pavel Yuruts
   last_updated_on: 2020-09-09 07:46:36.000000000 Z
@@ -161,7 +172,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Package Managers
   image_url: https://img.stackshare.io/package/pub/image.png
-  detection_source_url: pubspec.lock
+  detection_source_url: https://github.com/epic-dev/flutter-shop/blob/master/pubspec.lock
   detection_source: pubspec.yaml
   last_updated_by: Pavel Yuruts
   last_updated_on: 2020-09-13 21:43:40.000000000 Z
@@ -174,7 +185,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Package Managers
   image_url: https://img.stackshare.io/package/pub/image.png
-  detection_source_url: pubspec.lock
+  detection_source_url: https://github.com/epic-dev/flutter-shop/blob/master/pubspec.lock
   detection_source: pubspec.yaml
   last_updated_by: Pavel Yuruts
   last_updated_on: 2020-09-13 21:43:40.000000000 Z
@@ -187,7 +198,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Package Managers
   image_url: https://img.stackshare.io/package/pub/image.png
-  detection_source_url: pubspec.lock
+  detection_source_url: https://github.com/epic-dev/flutter-shop/blob/master/pubspec.lock
   detection_source: pubspec.yaml
   last_updated_by: Pavel Yuruts
   last_updated_on: 2020-09-09 07:46:36.000000000 Z
@@ -207,7 +218,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Package Managers
   image_url: https://img.stackshare.io/package/pub/image.png
-  detection_source_url: pubspec.lock
+  detection_source_url: https://github.com/epic-dev/flutter-shop/blob/master/pubspec.lock
   detection_source: pubspec.yaml
   last_updated_by: Pavel Yuruts
   last_updated_on: 2020-09-09 07:46:36.000000000 Z
@@ -221,7 +232,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Package Managers
   image_url: https://img.stackshare.io/package/pub/image.png
-  detection_source_url: pubspec.lock
+  detection_source_url: https://github.com/epic-dev/flutter-shop/blob/master/pubspec.lock
   detection_source: pubspec.yaml
   last_updated_by: Pavel Yuruts
   last_updated_on: 2020-09-09 07:46:36.000000000 Z
@@ -233,6 +244,7 @@ tools:
   category: Libraries
   sub_category: Maven Packages
   image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/epic-dev/flutter-shop/blob/master/android/app/build.gradle
   detection_source: android/app/build.gradle
   last_updated_by: Pavel Yuruts
   last_updated_on: 2020-09-09 07:46:36.000000000 Z
