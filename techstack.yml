@@ -2,7 +2,7 @@ repo_name: epic-dev/flutter-shop
 report_id: 495998108a57c57a1004d2f4ae4514fa
 version: 0.1
 repo_type: Public
-timestamp: '2024-01-05T09:26:10+00:00'
+timestamp: '2024-02-29T18:02:10+00:00'
 requested_by: pyuruts
 provider: github
 branch: master
@@ -65,7 +65,7 @@ tools:
   detection_source_url: https://github.com/epic-dev/flutter-shop
   detection_source: Repo Metadata
 - name: Swift
-  description: 'An innovative new programming language for Cocoa and Cocoa Touch. '
+  description: An innovative new programming language for Cocoa and Cocoa Touch.
   website_url: https://developer.apple.com/swift/
   license: Apache-2.0
   open_source: true
